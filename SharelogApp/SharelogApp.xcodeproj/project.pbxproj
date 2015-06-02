@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B6DF5BD1B03A59F002320B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6DF5BC1B03A59F002320B2 /* main.m */; };
 		3B6DF5C01B03A59F002320B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6DF5BF1B03A59F002320B2 /* AppDelegate.m */; };
-		3B6DF5C31B03A59F002320B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6DF5C21B03A59F002320B2 /* ViewController.m */; };
+		3B6DF5C31B03A59F002320B2 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B6DF5C21B03A59F002320B2 /* ViewController.mm */; };
 		3B6DF5C61B03A59F002320B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6DF5C41B03A59F002320B2 /* Main.storyboard */; };
 		3B6DF5C81B03A59F002320B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B6DF5C71B03A59F002320B2 /* Images.xcassets */; };
 		3B6DF5CB1B03A59F002320B2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B6DF5C91B03A59F002320B2 /* LaunchScreen.xib */; };
@@ -38,13 +38,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FA9C4D31B1E34CB008A33B2 /* CImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CImg.h; path = Frameworks/cimg/CImg.h; sourceTree = "<group>"; };
 		3B6DF5B71B03A59F002320B2 /* SharelogApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharelogApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B6DF5BB1B03A59F002320B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6DF5BC1B03A59F002320B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3B6DF5BE1B03A59F002320B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B6DF5BF1B03A59F002320B2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3B6DF5C11B03A59F002320B2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3B6DF5C21B03A59F002320B2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3B6DF5C21B03A59F002320B2 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		3B6DF5C51B03A59F002320B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B6DF5C71B03A59F002320B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3B6DF5CA1B03A59F002320B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -100,14 +101,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FA9C4D21B1E34AC008A33B2 /* cimg */ = {
+			isa = PBXGroup;
+			children = (
+				0FA9C4D31B1E34CB008A33B2 /* CImg.h */,
+			);
+			name = cimg;
+			sourceTree = "<group>";
+		};
 		3B6DF5AE1B03A59F002320B2 = {
 			isa = PBXGroup;
 			children = (
+				CD84F0DDAC577FCE0BE596E9 /* Frameworks */,
 				3B6DF5B91B03A59F002320B2 /* SharelogApp */,
 				3B6DF5D31B03A5A0002320B2 /* SharelogAppTests */,
 				3B6DF5B81B03A59F002320B2 /* Products */,
 				8025A56535673D1219288431 /* Pods */,
-				CD84F0DDAC577FCE0BE596E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,7 +135,7 @@
 				3B6DF5BE1B03A59F002320B2 /* AppDelegate.h */,
 				3B6DF5BF1B03A59F002320B2 /* AppDelegate.m */,
 				3B6DF5C11B03A59F002320B2 /* ViewController.h */,
-				3B6DF5C21B03A59F002320B2 /* ViewController.m */,
+				3B6DF5C21B03A59F002320B2 /* ViewController.mm */,
 				3B6DF5C41B03A59F002320B2 /* Main.storyboard */,
 				3B6DF5C71B03A59F002320B2 /* Images.xcassets */,
 				3B6DF5C91B03A59F002320B2 /* LaunchScreen.xib */,
@@ -206,6 +215,7 @@
 		CD84F0DDAC577FCE0BE596E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FA9C4D21B1E34AC008A33B2 /* cimg */,
 				3B6DF5E01B041B0B002320B2 /* Hprose */,
 				BEC974C843CF65F8A7286DDE /* Pods_SharelogApp.framework */,
 			);
@@ -367,7 +377,7 @@
 				3B6DF5FE1B041B0B002320B2 /* HproseFormatter.m in Sources */,
 				3B6DF5FD1B041B0B002320B2 /* HproseException.m in Sources */,
 				3B6DF6001B041B0B002320B2 /* HproseHttpClient.m in Sources */,
-				3B6DF5C31B03A59F002320B2 /* ViewController.m in Sources */,
+				3B6DF5C31B03A59F002320B2 /* ViewController.mm in Sources */,
 				3B6DF5FF1B041B0B002320B2 /* HproseHelper.m in Sources */,
 				3B6DF5FA1B041B0B002320B2 /* HproseClassManager.m in Sources */,
 				3B6DF5FB1B041B0B002320B2 /* HproseClient.m in Sources */,
