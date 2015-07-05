@@ -14,12 +14,12 @@
 
 @implementation ViewController
 
-
+#define TEST_IMG @"test6.jpg"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.orgImg = [UIImage imageNamed:@"Lena1.jpg"];
+    self.orgImg = [UIImage imageNamed:TEST_IMG];
     self.orgView.image = self.orgImg;
     /*
     self.filterList = [NSArray arrayWithObjects:
@@ -106,8 +106,8 @@
     }
     NSUInteger row = [indexPath row];
     cell.textLabel.text = [self.filterList objectAtIndex:row];
-    cell.imageView.image = [UIImage imageNamed:@"Lena1.jpg"];
-    cell.detailTextLabel.text = @"详细信息";
+    cell.imageView.image = [UIImage imageNamed:TEST_IMG];
+    //cell.detailTextLabel.text = @"详细信息";
     return cell;
 }
 
@@ -126,6 +126,33 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.filterList.count;
+}
+
+- (void)updateImage{
+    // 异步处理
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
+    ^(void){
+        for(UISlider *slider in self.filterPropertyView.subviews){
+            NSNumber *num = [NSNumber numberWithFloat:slider.value];
+            for(id key in self.filter.attributes){
+                NSDictionary *property = [self.filter.attributes objectForKey:key];
+                if([property isKindOfClass:[NSDictionary class]] && [property objectForKey:@"tag"]){
+                    if(slider.tag == [[property valueForKey:@"tag"] integerValue]){
+                        [self.filter setValue:num forKey:key];
+                        NSLog(@"%@ = %@", key, num);
+                    }
+                }
+            }
+        }
+        
+        CIImage *outputImage = [self.filter outputImage];
+        UIImage *newImage = [UIImage imageWithCIImage:outputImage];
+                       
+        dispatch_async(dispatch_get_main_queue(),
+        ^(void){
+            self.edtView.image = newImage;
+        });
+    });
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -178,57 +205,12 @@
     if([self.filter.attributes objectForKey:@"inputImage"]!=nil){
         [self.filter setValue:beginImage forKey:@"inputImage"];
     }
-    NSLog(@"\n%@", filter.attributes);
+    //NSLog(@"\n%@", filter.attributes);
+    [self updateImage];
 }
 
 - (void) sliderValueChanged:(id)sender{
-    UISlider* control = (UISlider*)sender;
-    NSNumber *num = [NSNumber numberWithFloat:control.value];
-    NSLog(@"slider value %@", num);
-    for(id key in self.filter.attributes){
-        NSDictionary *property = [self.filter.attributes objectForKey:key];
-        if([property isKindOfClass:[NSDictionary class]] && [property objectForKey:@"tag"]){
-            [self.filter setValue:num forKey:key];
-        }
-    }
-    // 异步处理
-    dispatch_async(
-    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
-    ^(void){
-
-        /* 添加自己的处理代码 */
-        /*
-        // 1
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"" ofType:@"jpg"];
-        NSURL *fileNameAndPath = [NSURL fileURLWithPath:filePath];
-         
-        // 2
-        CIImage *beginImage = [CIImage imageWithContentsOfURL:fileNameAndPath];
-        
-        CIImage *beginImage = [CIImage imageWithCGImage:[self.orgImg CGImage]];
-        if([self.filter.attributes objectForKey:@"inputImage"]!=nil){
-            [self.filter setValue:beginImage forKey:@"inputImage"];
-        }
-        */
-        
-        // 3
-        /*NSString *filterName = [self.filterList objectAtIndex:self.filterIndex];
-        [self.filter setValue:num forKey:filterName];
-        for(id property in [self.filter.attributes valueForKey:filterName]){
-            NSString *tag  = [property valueForKey:@"tag"];
-            if(tag!=nil && ([tag integerValue]==control.tag)){
-                
-            }
-        }*/
-        
-        // 4
-        CIImage *outputImage = [self.filter outputImage];
-        UIImage *newImage = [UIImage imageWithCIImage:outputImage];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            self.edtView.image = newImage;
-        });
-    });
+    [self updateImage];
 }
 
 @end
