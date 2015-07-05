@@ -23,12 +23,13 @@
                                 <rect key="frame" x="216" y="20" width="182" height="188"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="68z-1L-mPF">
-                                <rect key="frame" x="16" y="226" width="382" height="345"/>
+                                <rect key="frame" x="16" y="226" width="382" height="247"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Kgn-SP-cAl">
-                                <rect key="frame" x="14" y="613" width="386" height="31"/>
-                            </slider>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kaz-G1-w54">
+                                <rect key="frame" x="16" y="497" width="382" height="211"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -36,7 +37,7 @@
                     <connections>
                         <outlet property="edtView" destination="8T6-VO-BLK" id="YFI-kD-VZr"/>
                         <outlet property="filterListView" destination="68z-1L-mPF" id="BpK-Q9-Aur"/>
-                        <outlet property="filterSlider" destination="Kgn-SP-cAl" id="cNQ-M8-0t8"/>
+                        <outlet property="filterPropertyView" destination="kaz-G1-w54" id="PUk-Wz-Df0"/>
                         <outlet property="orgView" destination="sST-q1-hOu" id="zcf-OW-46H"/>
                     </connections>
                 </viewController>

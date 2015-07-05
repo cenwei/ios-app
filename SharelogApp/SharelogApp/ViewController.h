@@ -14,9 +14,10 @@
 @property (strong, nonatomic) UIImage *orgImg;// 原始图片
 @property (strong, nonatomic) IBOutlet UITableView *filterListView;// 滤镜列表
 @property (strong, nonatomic) NSArray *filterList;// 滤镜名称
-@property (strong, nonatomic) IBOutlet UISlider *filterSlider;// 滤镜值选择
+@property (strong, nonatomic) NSMutableArray *filterKeys;// 滤镜的属性UI控件
+@property (strong, nonatomic) CIFilter *filter;// 滤镜
+@property (strong, nonatomic) IBOutlet UIView *filterPropertyView;// 属性视图
 @property NSInteger filterIndex;// 当前选择的滤镜索引
-@property float filterValue;// 滤镜应用值
 - (IBAction)onSubmit:(id)sender;
 
 @end

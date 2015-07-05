@@ -21,209 +21,27 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.orgImg = [UIImage imageNamed:@"Lena1.jpg"];
     self.orgView.image = self.orgImg;
+    /*
     self.filterList = [NSArray arrayWithObjects:
                        @"CISepiaTone",
                        @"CIVignetteEffect",
                        @"CIVignette",
                        @"CIColorMonochrome",nil];
-    /*
-    self.filterList = [NSArray arrayWithObjects:
-                       // CICategoryBlur
-                       @"CIBoxBlur",
-                       @"CIDiscBlur",
-                       @"CIGaussianBlur",
-                       @"CIMaskedVariableBlur",
-                       @"CIMedianFilter",
-                       @"CIMotionBlur",
-                       @"CINoiseReduction",
-                       @"CIZoomBlur",
-                       // CICategoryColorAdjustment
-                       @"CIColorClamp",
-                       @"CIColorControls",
-                       @"CIColorMatrix",
-                       @"CIColorPolynomial",
-                       @"CIExposureAdjust",
-                       @"CIGammaAdjust",
-                       @"CIHueAdjust",
-                       @"CILinearToSRGBToneCurve",
-                       @"CISRGBToneCurveToLinear",
-                       @"CITemperatureAndTint",
-                       @"CIToneCurve",
-                       @"CIVibrance",
-                       @"CIWhitePointAdjust",
-                       // CICategoryColorEffect
-                       @"CIColorCrossPolynomial",
-                       @"CIColorCube",
-                       @"CIColorCubeWithColorSpace",
-                       @"CIColorInvert",
-                       @"CIColorMap",
-                       @"CIColorMonochrome",
-                       @"CIColorPosterize",
-                       @"CIFalseColor",
-                       @"CIMaskToAlpha",
-                       @"CIMaximumComponent",
-                       @"CIMinimumComponent",
-                       @"CIPhotoEffectChrome",
-                       @"CIPhotoEffectFade",
-                       @"CIPhotoEffectInstant",
-                       @"CIPhotoEffectMono",
-                       @"CIPhotoEffectNoir",
-                       @"CIPhotoEffectProcess",
-                       @"CIPhotoEffectTonal",
-                       @"CIPhotoEffectTransfer",
-                       @"CISepiaTone",
-                       @"CIVignette",
-                       @"CIVignetteEffect",
-                       // CICategoryCompositeOperation
-                       @"CIAdditionCompositing",
-                       @"CIColorBlendMode",
-                       @"CIColorBurnBlendMode",
-                       @"CIColorDodgeBlendMode",
-                       @"CIDarkenBlendMode",
-                       @"CIDifferenceBlendMode",
-                       @"CIDivideBlendMode",
-                       @"CIExclusionBlendMode",
-                       @"CIHardLightBlendMode",
-                       @"CIHueBlendMode",
-                       @"CILightenBlendMode",
-                       @"CILinearBurnBlendMode",
-                       @"CILinearDodgeBlendMode",
-                       @"CILuminosityBlendMode",
-                       @"CIMaximumCompositing",
-                       @"CIMinimumCompositing",
-                       @"CIMultiplyBlendMode",
-                       @"CIMultiplyCompositing",
-                       @"CIOverlayBlendMode",
-                       @"CIPinLightBlendMode",
-                       @"CISaturationBlendMode",
-                       @"CIScreenBlendMode",
-                       @"CISoftLightBlendMode",
-                       @"CISourceAtopCompositing",
-                       @"CISourceInCompositing",
-                       @"CISourceOutCompositing",
-                       @"CISourceOverCompositing",
-                       @"CISubtractBlendMode",
-                       // CICategoryDistortionEffect
-                       @"CIBumpDistortion",
-                       @"CIBumpDistortionLinear",
-                       @"CICircleSplashDistortion",
-                       @"CICircularWrap",
-                       @"CIDroste",
-                       @"CIDisplacementDistortion",
-                       @"CIGlassDistortion",
-                       @"CIGlassLozenge",
-                       @"CIHoleDistortion",
-                       @"CILightTunnel",
-                       @"CIPinchDistortion",
-                       @"CIStretchCrop",
-                       @"CITorusLensDistortion",
-                       @"CITwirlDistortion",
-                       @"CIVortexDistortion",
-                       // CICategoryGenerator
-                       @"CIAztecCodeGenerator",
-                       @"CICheckerboardGenerator",
-                       @"CICode128BarcodeGenerator",
-                       @"CIConstantColorGenerator",
-                       @"CILenticularHaloGenerator",
-                       @"CIQRCodeGenerator",
-                       @"CIRandomGenerator",
-                       @"CIStarShineGenerator",
-                       @"CIStripesGenerator",
-                       @"CISunbeamsGenerator",
-                       // CICategoryGeometryAdjustment
-                       @"CIAffineTransform",
-                       @"CICrop",
-                       @"CILanczosScaleTransform",
-                       @"CIPerspectiveCorrection",
-                       @"CIPerspectiveTransform",
-                       @"CIPerspectiveTransformWithExtent",
-                       @"CIStraightenFilter",
-                       // CICategoryGradient
-                       @"CIGaussianGradient",
-                       @"CILinearGradient",
-                       @"CIRadialGradient",
-                       @"CISmoothLinearGradient",
-                       // CICategoryHalftoneEffect
-                       @"CICircularScreen",
-                       @"CICMYKHalftone",
-                       @"CIDotScreen",
-                       @"CIHatchedScreen",
-                       @"CILineScreen",
-                       // CICategoryReduction
-                       @"CIAreaAverage",
-                       @"CIAreaHistogram",
-                       @"CIRowAverage",
-                       @"CIColumnAverage",
-                       @"CIHistogramDisplayFilter",
-                       @"CIAreaMaximum",
-                       @"CIAreaMinimum",
-                       @"CIAreaMaximumAlpha",
-                       @"CIAreaMinimumAlpha",
-                       // CICategorySharpen
-                       @"CISharpenLuminance",
-                       @"CIUnsharpMask",
-                       // CICategoryStylize
-                       @"CIBlendWithAlphaMask",
-                       @"CIBlendWithMask",
-                       @"CIBloom",
-                       @"CIComicEffect",
-                       @"CIConvolution3X3",
-                       @"CIConvolution5X5",
-                       @"CIConvolution7X7",
-                       @"CIConvolution9Horizontal",
-                       @"CIConvolution9Vertical",
-                       @"CICrystallize",
-                       @"CIDepthOfField",
-                       @"CIEdges",
-                       @"CIEdgeWork",
-                       @"CIGloom",
-                       @"CIHeightFieldFromMask",
-                       @"CIHexagonalPixellate",
-                       @"CIHighlightShadowAdjust",
-                       @"CILineOverlay",
-                       @"CIPixellate",
-                       @"CIPointillize",
-                       @"CIShadedMaterial",
-                       @"CISpotColor",
-                       @"CISpotLight",
-                       // CICategoryTileEffect
-                       @"CIAffineClamp",
-                       @"CIAffineTile",
-                       @"CIEightfoldReflectedTile",
-                       @"CIFourfoldReflectedTile",
-                       @"CIFourfoldRotatedTile",
-                       @"CIFourfoldTranslatedTile",
-                       @"CIGlideReflectedTile",
-                       @"CIKaleidoscope",
-                       @"CIOpTile",
-                       @"CIParallelogramTile",
-                       @"CIPerspectiveTile",
-                       @"CISixfoldReflectedTile",
-                       @"CISixfoldRotatedTile",
-                       @"CITriangleKaleidoscope",
-                       @"CITriangleTile",
-                       @"CITwelvefoldReflectedTile",
-                       // CICategoryTransition
-                       @"CIAccordionFoldTransition",
-                       @"CIBarsSwipeTransition",
-                       @"CICopyMachineTransition",
-                       @"CIDisintegrateWithMaskTransition",
-                       @"CIDissolveTransition",
-                       @"CIFlashTransition",
-                       @"CIModTransition",
-                       @"CIPageCurlTransition",
-                       @"CIPageCurlWithShadowTransition",
-                       @"CIRippleTransition",
-                       @"CISwipeTransition",
-                       nil];
-     */
+    */
+    NSArray *filters = [CIFilter filterNamesInCategory:kCICategoryBuiltIn];
+    if(filters==nil){
+        NSLog(@"no any filters");
+        exit(0);
+    }
+    self.filterList = filters;
     
     self.filterListView.dataSource = self;
     self.filterListView.delegate = self;
     self.filterIndex = 0;
     
-    [self.filterSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    self.filterSlider.continuous = FALSE;
+    /*[self.filterSlider addTarget:self action:@selector(sliderValueChanged:) 
+                        forControlEvents:UIControlEventValueChanged];
+    self.filterSlider.continuous = FALSE;*/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -241,6 +59,7 @@
     free(data);
 }
 
+/* duplicated */
 - (UIImage*)createUIImageWithData:(void*)data width:(int)width height:(int)height bytePerPixel:(int)bytes{
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef newContext =   CGBitmapContextCreate(data,
@@ -256,6 +75,7 @@
     return img;
 }
 
+/* duplicated */
 - (void*)getUIImageData:(UIImage*)img{
     CGImageRef image = [img CGImage];
     CGSize image_size = img.size;
@@ -310,38 +130,105 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.filterIndex = indexPath.row;
-    NSLog(@"select %@", [self.filterList objectAtIndex:self.filterIndex]);
+    NSString *filterName = [self.filterList objectAtIndex:self.filterIndex];
+    CIFilter *filter = [CIFilter filterWithName:filterName];
+    if(filter==nil) return;
+    NSArray *inKeys = [filter inputKeys];
+    //NSArray *outKeys = [filter outputKeys];
+    // remove all UISlider
+    for(id slider in self.filterPropertyView.subviews){
+        if([slider isKindOfClass:[UISlider class]]){
+            [slider setHidden:YES];
+            [slider removeFromSuperview];
+        }
+    }
+    // add new UISlider
+    CGFloat width = self.filterPropertyView.frame.size.width;
+    CGFloat height = self.filterPropertyView.frame.size.height / inKeys.count;
+    NSInteger line = 0;
+    for(NSInteger i=0; i<inKeys.count; i++){
+        NSString *key = [inKeys objectAtIndex:i];
+        NSDictionary *attribute = [filter.attributes objectForKey:key];
+        NSString *type = [attribute objectForKey:@"CIAttributeClass"];
+        if([type isEqualToString:@"NSInteger"] || [type isEqualToString:@"NSNumber"]){
+            UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(0, line*height, width, height)];
+            [slider addTarget:self action:@selector(sliderValueChanged:)
+                        forControlEvents:UIControlEventValueChanged];
+            slider.continuous = FALSE;
+            slider.tag = i;// 记录标签
+            [attribute setValue:[NSString stringWithFormat:@"%ld", (long)i] forKey:@"tag"];
+            slider.minimumValue = [[attribute objectForKey:@"CIAttributeSliderMin"] floatValue];
+            slider.maximumValue = [[attribute objectForKey:@"CIAttributeSliderMax"] floatValue];
+            slider.value = [[attribute objectForKey:@"CIAttributeDefault"] floatValue];
+            [self.filterPropertyView addSubview:slider];
+            line++;
+        }
+        if([type isEqualToString:@"NSValue"]){
+            // FIXME
+
+        }
+        if([type isEqualToString:@"CIImage"]){
+            // FIXME
+            
+        }
+        
+    }
+    self.filter = filter;
+    CIImage *beginImage = [CIImage imageWithCGImage:[self.orgImg CGImage]];
+    if([self.filter.attributes objectForKey:@"inputImage"]!=nil){
+        [self.filter setValue:beginImage forKey:@"inputImage"];
+    }
+    NSLog(@"\n%@", filter.attributes);
 }
 
 - (void) sliderValueChanged:(id)sender{
     UISlider* control = (UISlider*)sender;
-    if(control == self.filterSlider){
-        self.filterValue = control.value;
-        NSLog(@"slider value %f", self.filterValue);
+    NSNumber *num = [NSNumber numberWithFloat:control.value];
+    NSLog(@"slider value %@", num);
+    for(id key in self.filter.attributes){
+        NSDictionary *property = [self.filter.attributes objectForKey:key];
+        if([property isKindOfClass:[NSDictionary class]] && [property objectForKey:@"tag"]){
+            [self.filter setValue:num forKey:key];
+        }
+    }
+    // 异步处理
+    dispatch_async(
+    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
+    ^(void){
+
         /* 添加自己的处理代码 */
         /*
         // 1
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"" ofType:@"jpg"];
         NSURL *fileNameAndPath = [NSURL fileURLWithPath:filePath];
-        
+         
         // 2
         CIImage *beginImage = [CIImage imageWithContentsOfURL:fileNameAndPath];
-        */
+        
         CIImage *beginImage = [CIImage imageWithCGImage:[self.orgImg CGImage]];
+        if([self.filter.attributes objectForKey:@"inputImage"]!=nil){
+            [self.filter setValue:beginImage forKey:@"inputImage"];
+        }
+        */
         
         // 3
-        NSNumber *num = [NSNumber numberWithFloat:self.filterValue];
-        NSString *filterName = [self.filterList objectAtIndex:self.filterIndex];
-        CIFilter *filter = [CIFilter filterWithName:filterName
-                                      keysAndValues: kCIInputImageKey, beginImage,
-                            @"inputIntensity", num, nil];
-        
-        CIImage *outputImage = [filter outputImage];
+        /*NSString *filterName = [self.filterList objectAtIndex:self.filterIndex];
+        [self.filter setValue:num forKey:filterName];
+        for(id property in [self.filter.attributes valueForKey:filterName]){
+            NSString *tag  = [property valueForKey:@"tag"];
+            if(tag!=nil && ([tag integerValue]==control.tag)){
+                
+            }
+        }*/
         
         // 4
+        CIImage *outputImage = [self.filter outputImage];
         UIImage *newImage = [UIImage imageWithCIImage:outputImage];
-        self.edtView.image = newImage;
-    }
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            self.edtView.image = newImage;
+        });
+    });
 }
 
 @end
