@@ -42,6 +42,21 @@
     /*[self.filterSlider addTarget:self action:@selector(sliderValueChanged:) 
                         forControlEvents:UIControlEventValueChanged];
     self.filterSlider.continuous = FALSE;*/
+    
+    //初始化图片选择器
+    self.imagePickerController=[[UIImagePickerController alloc] init];
+    self.imagePickerController.delegate = self;
+    
+    //初始化CIContext
+    //创建基于CPU的图像上下文
+    //    NSNumber *number=[NSNumber numberWithBool:YES];
+    //    NSDictionary *option=[NSDictionary dictionaryWithObject:number forKey:kCIContextUseSoftwareRenderer];
+    //    _context=[CIContext contextWithOptions:option];
+    // 使用GPU渲染，推荐,但注意GPU的CIContext无法跨应用访问，例如直接在UIImagePickerController的完成方法中调用上下文处理就会自动降级为CPU渲染，所以推荐现在完成方法中保存图像，然后在主程序中调用
+    self.context=[CIContext contextWithOptions:nil];
+    //    EAGLContext *eaglContext=[[EAGLContext alloc]initWithAPI:kEAGLRenderingAPIOpenGLES1];
+    //    _context=[CIContext contextWithEAGLContext:eaglContext];//OpenGL优化过的图像上下文
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +64,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (IBAction)onSubmit:(id)sender {
+    /*
     void *data = [self getUIImageData:self.orgImg];
     unsigned width = self.orgImg.size.width;
     unsigned height = self.orgImg.size.height;
@@ -57,9 +74,71 @@
     UIImage *img = [self createUIImageWithData:data width:width height:height bytePerPixel:4];
     self.edtView.image = img;
     free(data);
+    */
+    // 绘制视图
+    CGRect rc = CGRectMake(100, 100, 100, 400);
+    self.drawView = [[SLView alloc]initWithFrame: rc];
+    [self.view addSubview:self.drawView];
+    
+    [self drawImage2];
 }
 
-/* duplicated */
+#pragma mark 打开图片选择器
+- (IBAction) onAddImg:(id)sender{
+    //打开图片选择器
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+}
+
+#pragma mark 保存图片
+-(void)savePhoto:(UIBarButtonItem *)btn{
+    //保存照片到相册
+    /*UIImageWriteToSavedPhotosAlbum(_imageView.image, nil, nil, nil);
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Sytem Info" message:@"Save Success!" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [alert show];*/
+}
+
+#pragma mark 图片选择器选择图片代理方法
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    //关闭图片选择器
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //取得选择图片
+    UIImage *selectedImage=[info objectForKey:UIImagePickerControllerOriginalImage];
+    self.orgView.image = selectedImage;
+    self.orgImg = selectedImage;
+    //初始化CIImage源图像
+    //_image=[CIImage imageWithCGImage:selectedImage.CGImage];
+    //[_colorControlsFilter setValue:_image forKey:@"inputImage"];//设置滤镜的输入图片
+}
+
+#pragma mark 将输出图片设置到UIImageView
+-(void)setImage{
+    /*
+     CIImage *outputImage= [_colorControlsFilter outputImage];//取得输出图像
+    CGImageRef temp=[_context createCGImage:outputImage fromRect:[outputImage extent]];
+    _imageView.image=[UIImage imageWithCGImage:temp];//转化为CGImage显示在界面中
+    
+    CGImageRelease(temp);//释放CGImage对象
+     */
+}
+
+#pragma mark 旋转图片
+-(void)drawImage2{
+    CGContextRef context=self.drawView.contextRef;
+    UIImage *image=self.orgImg;
+    CGSize size=[UIScreen mainScreen].bounds.size;
+    CGContextSaveGState(context);
+    CGFloat height=450,y=50;
+    //上下文形变
+    CGContextScaleCTM(context, 1.0, -1.0);//在y轴缩放-1相当于沿着x张旋转180
+    CGContextTranslateCTM(context, 0, -(size.height-(size.height-2*y-height)));//向上平移
+    //图像绘制
+    CGRect rect= CGRectMake(10, y, 300, height);
+    CGContextDrawImage(context, rect, image.CGImage);
+    
+    CGContextRestoreGState(context);
+}
+
+/* useless */
 - (UIImage*)createUIImageWithData:(void*)data width:(int)width height:(int)height bytePerPixel:(int)bytes{
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef newContext =   CGBitmapContextCreate(data,
@@ -75,7 +154,7 @@
     return img;
 }
 
-/* duplicated */
+/* useless */
 - (void*)getUIImageData:(UIImage*)img{
     CGImageRef image = [img CGImage];
     CGSize image_size = img.size;
@@ -209,6 +288,7 @@
     [self updateImage];
 }
 
+#pragma mark 滑动按钮事件
 - (void) sliderValueChanged:(id)sender{
     [self updateImage];
 }

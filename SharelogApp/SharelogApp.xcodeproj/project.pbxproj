@@ -14,6 +14,9 @@
 		0F9708231B49690800C535D3 /* test5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F97081E1B49690800C535D3 /* test5.jpg */; };
 		0F9708251B496DF900C535D3 /* test6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0F9708241B496DF800C535D3 /* test6.jpg */; };
 		0FE348BC1B3FB490000EBD73 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE348BB1B3FB490000EBD73 /* CoreImage.framework */; };
+		0FE65CB11B775C5400718D02 /* StackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE65CB01B775C5400718D02 /* StackViewController.m */; };
+		0FE65CB41B77809C00718D02 /* PhotoStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE65CB31B77809C00718D02 /* PhotoStackView.m */; };
+		0FF66B191B5BA4290094862B /* SLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF66B181B5BA4290094862B /* SLView.m */; };
 		3B6DF5BD1B03A59F002320B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6DF5BC1B03A59F002320B2 /* main.m */; };
 		3B6DF5C01B03A59F002320B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6DF5BF1B03A59F002320B2 /* AppDelegate.m */; };
 		3B6DF5C31B03A59F002320B2 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B6DF5C21B03A59F002320B2 /* ViewController.mm */; };
@@ -53,6 +56,12 @@
 		0F9708241B496DF800C535D3 /* test6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test6.jpg; sourceTree = "<group>"; };
 		0FA9C4D31B1E34CB008A33B2 /* CImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CImg.h; path = Frameworks/cimg/CImg.h; sourceTree = "<group>"; };
 		0FE348BB1B3FB490000EBD73 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		0FE65CAF1B775C5400718D02 /* StackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackViewController.h; sourceTree = "<group>"; };
+		0FE65CB01B775C5400718D02 /* StackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackViewController.m; sourceTree = "<group>"; };
+		0FE65CB21B77809C00718D02 /* PhotoStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoStackView.h; sourceTree = "<group>"; };
+		0FE65CB31B77809C00718D02 /* PhotoStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoStackView.m; sourceTree = "<group>"; };
+		0FF66B171B5BA4290094862B /* SLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLView.h; sourceTree = "<group>"; };
+		0FF66B181B5BA4290094862B /* SLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLView.m; sourceTree = "<group>"; };
 		3B6DF5B71B03A59F002320B2 /* SharelogApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharelogApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B6DF5BB1B03A59F002320B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6DF5BC1B03A59F002320B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -163,6 +172,12 @@
 				0F9708261B496E0200C535D3 /* img */,
 				3B6DF5BE1B03A59F002320B2 /* AppDelegate.h */,
 				3B6DF5BF1B03A59F002320B2 /* AppDelegate.m */,
+				0FE65CB21B77809C00718D02 /* PhotoStackView.h */,
+				0FE65CB31B77809C00718D02 /* PhotoStackView.m */,
+				0FE65CAF1B775C5400718D02 /* StackViewController.h */,
+				0FE65CB01B775C5400718D02 /* StackViewController.m */,
+				0FF66B171B5BA4290094862B /* SLView.h */,
+				0FF66B181B5BA4290094862B /* SLView.m */,
 				3B6DF5C11B03A59F002320B2 /* ViewController.h */,
 				3B6DF5C21B03A59F002320B2 /* ViewController.mm */,
 				3B6DF5C41B03A59F002320B2 /* Main.storyboard */,
@@ -415,11 +430,14 @@
 				3B6DF6001B041B0B002320B2 /* HproseHttpClient.m in Sources */,
 				3B6DF5C31B03A59F002320B2 /* ViewController.mm in Sources */,
 				3B6DF5FF1B041B0B002320B2 /* HproseHelper.m in Sources */,
+				0FE65CB41B77809C00718D02 /* PhotoStackView.m in Sources */,
 				3B6DF5FA1B041B0B002320B2 /* HproseClassManager.m in Sources */,
 				3B6DF5FB1B041B0B002320B2 /* HproseClient.m in Sources */,
 				3B6DF6011B041B0B002320B2 /* HproseProperty.m in Sources */,
 				3B6DF6021B041B0B002320B2 /* HproseReader.m in Sources */,
+				0FE65CB11B775C5400718D02 /* StackViewController.m in Sources */,
 				3B6DF5C01B03A59F002320B2 /* AppDelegate.m in Sources */,
+				0FF66B191B5BA4290094862B /* SLView.m in Sources */,
 				3B6DF6031B041B0B002320B2 /* HproseWriter.m in Sources */,
 				3B6DF5BD1B03A59F002320B2 /* main.m in Sources */,
 			);
